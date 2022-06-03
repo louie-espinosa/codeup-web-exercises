@@ -1,3 +1,4 @@
+()
 "use strict";
 
 /**
@@ -104,10 +105,10 @@ alert(calculateTip(a, b));
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
 function applyDiscount(orignalPrice, discount) {
-    //let bill = 150;
-    //let percentDiscount = .25*bill;
-    let youSaved = (originalPrice - (originalPrice*discount);
+
+    let youSaved = (originalPrice - (originalPrice*discount)); //we could have used: let youSaved = (original price - calculateTip(originalPrice, discount));
     return youSaved;
 }
 
 applyDiscount();
+
