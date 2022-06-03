@@ -104,24 +104,34 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Test your function by passing it various values and checking for the expected
  * return value.
 //  */
-function calculateTotal(luckyNumber, totalAmount) {
-    let numbers = ['0', '1', '2', '3', '4', '5', '6'];
-    let randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
-    switch(luckyNumber, totalAmount) {
-        case "0, 1, 2, 3, 4, 5" :
-            alert("Youve earned 10 percent off!");
-            alert("You've earned 25 percent off!");
-            alert("You've earned 35 percent off!");
-            alert("you've earned 50 percent off!");
-            alert("Congrats, your meal is free!");
+function calculateTotal(randomNumber, totalBill) {
+    switch(randomNumber) {
+        case 1 :
+         alert("Congrats, you get 10 percent off");
+         return totalBill - (.1*totalBill);
+         break;
+        case 2 :
+            alert("Congrats, you get 25 percent off!");
+            return totalBill - (.25*totalBill);
             break;
-        default:
-            alert("Sorry, you did not earn a s discount today")
-
+        case 3 :
+            alert("Congrats you get 35 percent off!");
+            return totalBill - (.35*totalBill);
+            break;
+        case 4 :
+            alert("Congrats you get 50 percent off!");
+            return totalBill - (.5*totalBill);
+            break;
+        case 5 :
+            alert("Congrats, you get your meal for free!!");
+            return totalBill - totalBill;
+            break;
+        default :
+            alert("Sorry, you did not get a discount today :( ");
+            return totalBill;
     }
 }
-
-console.log(calculateTotal(1));
+console.log(calculateTotal(0, 100));
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -131,7 +141,10 @@ console.log(calculateTotal(1));
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+let luckyNumber = Math.floor(Math.random() * 6);
+let howMuch = prompt("What was your total today?");
+
+alert("Lucky number? It was " + luckyNumber + ". And you were paying.. " + howMuch + ". Good news, you ended up only paying " + calculateTotal(luckyNumber, howMuch));
 
 /**
  * TODO:
@@ -151,3 +164,10 @@ console.log(calculateTotal(1));
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+function sesameStreet()
+  let confirm = confirm("Click ok if you're feeling lucky");
+
+    if confirm === true prompt
+
+
+//let enterANumber = confirm("press 'OK' if you'd like to enter a number") ? prompt("Enter your number below") : alert("You've entered the incorrect data type");
