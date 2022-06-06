@@ -164,31 +164,29 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
-// let enterANumber = confirm("press 'OK' if you'd like to enter a number");
-// if (enterANumber) {
-//   prompt("Enter your number below");
-// } if (enterANumber) {
-//     alert(enterANumber); it was harder get what I expected using an if statement, and easier when I began with a ternary.
 
 function clickBait() {
-//I could not, ftlom, nest the if/else inside of the ternary operator. So I did not get the expected result of "Please try again."
-    let magicNumber = confirm("press 'OK' if you'd like to enter a number") ? parseFloat(prompt("Enter your number below")) : "Please try again";
-        if (isNaN(magicNumber) === false) {
-            if (magicNumber >= 0) {
-                alert("The number " + magicNumber + " is positive.");
-            } else {
-                alert("The number is negative");
-            }
-            if (magicNumber % 2 === 0) {
-                alert("The number is " + magicNumber + " even.");
-            } else {
-                alert("The number is odd");
-            }
-        alert("The number " + magicNumber + " plus 100 is " + (magicNumber + 100) + ".");
-    }else {
-        alert("Try a number this time");
-        }
+//I could not, ftlom, nest the if/else inside the ternary operator. So I did not get the expected result.
+// used a function--with Brian's help--to merge the ternary and the if/else nest.
 
+    confirm("press 'OK' if you'd like to enter a number") ? ifElse(parseFloat(prompt("Enter your number below"))) : null;
+       function ifElse (magicNumber) {
+           if (isNaN(magicNumber) === false) {
+               if (magicNumber >= 0) {
+                   alert(magicNumber + " is positive.");
+               } else {
+                   alert("The number is negative");
+               }
+               if (magicNumber % 2 === 0) {
+                   alert( magicNumber + " is even.");
+               } else {
+                   alert(magicNumber + " is odd");
+               }
+               alert(magicNumber + " plus 100 is " + (magicNumber + 100) + ".");
+           } else {
+               alert("Refresh and try a number this time.")
+           }
+       }
 
 }
  clickBait();
