@@ -104,34 +104,34 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Test your function by passing it various values and checking for the expected
  * return value.
 //  */
-function calculateTotal(randomNumber, totalBill) {
-    switch(randomNumber) {
-        case 1 :
-         alert("Congrats, you get 10 percent off");
-         return totalBill - (.1*totalBill);
-         break;
-        case 2 :
-            alert("Congrats, you get 25 percent off!");
-            return totalBill - (.25*totalBill);
-            break;
-        case 3 :
-            alert("Congrats you get 35 percent off!");
-            return totalBill - (.35*totalBill);
-            break;
-        case 4 :
-            alert("Congrats you get 50 percent off!");
-            return totalBill - (.5*totalBill);
-            break;
-        case 5 :
-            alert("Congrats, you get your meal for free!!");
-            return totalBill - totalBill;
-            break;
-        default :
-            alert("Sorry, you did not get a discount today :( ");
-            return totalBill;
-    }
-}
-console.log(calculateTotal(0, 100));
+// function calculateTotal(randomNumber, totalBill) {
+//     switch(randomNumber) {
+//         case 1 :
+//          alert("Congrats, you get 10 percent off");
+//          return totalBill - (.1*totalBill);
+//          break;
+//         case 2 :
+//             alert("Congrats, you get 25 percent off!");
+//             return totalBill - (.25*totalBill);
+//             break;
+//         case 3 :
+//             alert("Congrats you get 35 percent off!");
+//             return totalBill - (.35*totalBill);
+//             break;
+//         case 4 :
+//             alert("Congrats you get 50 percent off!");
+//             return totalBill - (.5*totalBill);
+//             break;
+//         case 5 :
+//             alert("Congrats, you get your meal for free!!");
+//             return totalBill - totalBill;
+//             break;
+//         default :
+//             alert("Sorry, you did not get a discount today :( ");
+//             return totalBill;
+//     }
+// }
+// console.log(calculateTotal(0, 100));
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -141,10 +141,10 @@ console.log(calculateTotal(0, 100));
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-let luckyNumber = Math.floor(Math.random() * 6);
-let howMuch = prompt("What was your total today?");
-
-alert("Lucky number? It was " + luckyNumber + ". And you were paying.. " + howMuch + ". Good news, you ended up only paying " + calculateTotal(luckyNumber, howMuch));
+// let luckyNumber = Math.floor(Math.random() * 6);
+// let howMuch = prompt("What was your total today?");
+//
+// alert("Lucky number? It was " + luckyNumber + ". And you were paying.. " + howMuch + ". Good news, you ended up only paying " + calculateTotal(luckyNumber, howMuch));
 
 /**
  * TODO:
@@ -164,10 +164,79 @@ alert("Lucky number? It was " + luckyNumber + ". And you were paying.. " + howMu
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
-function sesameStreet()
-  let confirm = confirm("Click ok if you're feeling lucky");
+// let enterANumber = confirm("press 'OK' if you'd like to enter a number");
+// if (enterANumber) {
+//   prompt("Enter your number below");
+// } if (enterANumber) {
+//     alert(enterANumber); it was harder get what I expected using an if statement, and easier when I began with a ternary.
 
-    if confirm === true prompt
+function clickBait() {
+//I could not, ftlom, nest the if/else inside of the ternary operator. So I did not get the expected result of "Please try again."
+    let magicNumber = confirm("press 'OK' if you'd like to enter a number") ? parseFloat(prompt("Enter your number below")) : "Please try again";
+        if (isNaN(magicNumber) === false) {
+            if (magicNumber >= 0) {
+                alert("The number " + magicNumber + " is positive.");
+            } else {
+                alert("The number is negative");
+            }
+            if (magicNumber % 2 === 0) {
+                alert("The number is " + magicNumber + " even.");
+            } else {
+                alert("The number is odd");
+            }
+        alert("The number " + magicNumber + " plus 100 is " + (magicNumber + 100) + ".");
+    }else {
+        alert("Try a number this time");
+        }
 
 
-//let enterANumber = confirm("press 'OK' if you'd like to enter a number") ? prompt("Enter your number below") : alert("You've entered the incorrect data type");
+}
+ clickBait();
+            // }}
+    // let positiveOrNegative = magicNumber >= 0 ? alert("The number " + magicNumber + " is positive") : alert("The number is negative");
+
+    //let isEven = (positiveOrNegative % 2 === 0);
+    //     if (positiveOrNegative % 2 === 0) {
+    //     alert("The number " + positiveOrNegative + " is even");
+    // }
+    //     else {
+    //     alert("The number is odd");
+// if (magicNumber === typeof "number") {
+//     parseFloat(prompt("Enter your number below."));
+
+
+// switch(magicNumber) {
+//     case magicNumber % 2 === 0 :
+//         alert("The number " + magicNumber + " is even");
+//     break;
+//     case magicNumber % 2 !== 0 :
+//         alert("The number " + magicNumber + " is odd");
+//         break;
+//         case magicNumber >= 0 :
+//         alert("The number " + magicNumber + " is positive");
+//         break;
+//     case magicNumber < 0 :
+//         alert("The number " + magicNumber + " is negative");
+//         break;
+//     default:
+//         alert("That is not a number; refresh and try again");
+//
+// }
+
+
+
+// if (enterANumber % 2 == 0) {
+//     alert("The number " + enterANumber + " is even");
+// } else if (e)
+//
+//
+//
+//
+//     // alert("The number " + enterANumber + " plus 100 is " + (enterANumber+100))
+//     alert("The number " + enterANumber + " is positive");
+// }else if (enterANumber % 2 != 0 && enterANumber > 0) {
+//     alert("The number " + enterANumber + " is odd");
+// }
+
+
+
