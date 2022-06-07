@@ -1,4 +1,5 @@
  "use strict";
+
 function showMultiplicationTable(x) {
     for (let i = 1; i < 11; i++) {
     console.log(x + "*" + i + "=" + (i * x));
@@ -17,7 +18,8 @@ function random200() {
         console.log(twoToTwenty + " is odd");
         }
 }}
-random200();
+
+ random200();
 
 function halfPyramid() {
     let pattern = "";
