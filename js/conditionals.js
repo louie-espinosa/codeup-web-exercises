@@ -21,21 +21,21 @@
  * Test your function by passing various string literals to it and
  * console.logging the function's return value
  */
-//  function analyzeColor(mood) {
-//     if (mood === "blue") {
-//         return("You're cool, calm, and collected!");
-//     } else if (mood === "red") {
-//         return("Your alert and ready to take on the world, but take caution!");
-//     } else if (mood === "yellow") {
-//         return("friendly and energetic: share some of that energy please");
-//     } else if (mood === "white") {
-//         return("your mood is high and heavenly!");
-//     } else {
-//             return(mood + " Not sure what mood you're in, but you're always welcome.");
-//     }
-// }
-//
-// console.log(analyzeColor("orange"));
+ function analyzeColor(mood) {
+    if (mood === "blue") {
+        return("You're cool, calm, and collected!");
+    } else if (mood === "red") {
+        return("Your alert and ready to take on the world, but take caution!");
+    } else if (mood === "yellow") {
+        return("friendly and energetic: share some of that energy please");
+    } else if (mood === "white") {
+        return("your mood is high and heavenly!");
+    } else {
+            return(mood + " Not sure what mood you're in, but you're always welcome.");
+    }
+}
+
+console.log(analyzeColor("orange"));
 
 // Don't change the next two lines!
 // These lines create two variables for you:
@@ -49,39 +49,39 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
-// console.log(analyzeColor(randomColor));
+console.log(analyzeColor(randomColor));
 
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-// function analyzeColor(mood){
-//     switch(mood) {
-//         case "blue" :
-//             return("You're cool, calm, and collected!");
-//             break;
-//         case "red" :
-//             return("Your alert and ready to take on the world, but take caution!");
-//             break;
-//         case "yellow" :
-//             return("friendly and energetic: share some of that energy please");
-//             break;
-//         case "white" :
-//             return("your mood is high and heavenly!");
-//             break;
-//         default: return(mood + " Not sure what mood you're in but you're always welcome.");
-//
-//     }
-// }
-// analyzeColor();
+function analyzeColor(mood){
+    switch(mood) {
+        case "blue" :
+            return("You're cool, calm, and collected!");
+            break;
+        case "red" :
+            return("Your alert and ready to take on the world, but take caution!");
+            break;
+        case "yellow" :
+            return("friendly and energetic: share some of that energy please");
+            break;
+        case "white" :
+            return("your mood is high and heavenly!");
+            break;
+        default: return(mood + " Not sure what mood you're in but you're always welcome.");
+
+    }
+}
+analyzeColor();
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
-// let howDoYouFeel = prompt("select a color that represents your mood");
-// alert("Based on your selection " + analyzeColor(howDoYouFeel));
+let howDoYouFeel = prompt("select a color that represents your mood");
+alert("Based on your selection " + analyzeColor(howDoYouFeel));
 
 /* ########################################################################## */
 
@@ -104,34 +104,34 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Test your function by passing it various values and checking for the expected
  * return value.
 //  */
-// function calculateTotal(randomNumber, totalBill) {
-//     switch(randomNumber) {
-//         case 1 :
-//          alert("Congrats, you get 10 percent off");
-//          return totalBill - (.1*totalBill);
-//          break;
-//         case 2 :
-//             alert("Congrats, you get 25 percent off!");
-//             return totalBill - (.25*totalBill);
-//             break;
-//         case 3 :
-//             alert("Congrats you get 35 percent off!");
-//             return totalBill - (.35*totalBill);
-//             break;
-//         case 4 :
-//             alert("Congrats you get 50 percent off!");
-//             return totalBill - (.5*totalBill);
-//             break;
-//         case 5 :
-//             alert("Congrats, you get your meal for free!!");
-//             return totalBill - totalBill;
-//             break;
-//         default :
-//             alert("Sorry, you did not get a discount today :( ");
-//             return totalBill;
-//     }
-// }
-// console.log(calculateTotal(0, 100));
+function calculateTotal(randomNumber, totalBill) {
+    switch(randomNumber) {
+        case 1 :
+         alert("Congrats, you get 10 percent off");
+         return totalBill - (.1*totalBill);
+         break;
+        case 2 :
+            alert("Congrats, you get 25 percent off!");
+            return totalBill - (.25*totalBill);
+            break;
+        case 3 :
+            alert("Congrats you get 35 percent off!");
+            return totalBill - (.35*totalBill);
+            break;
+        case 4 :
+            alert("Congrats you get 50 percent off!");
+            return totalBill - (.5*totalBill);
+            break;
+        case 5 :
+            alert("Congrats, you get your meal for free!!");
+            return totalBill - totalBill;
+            break;
+        default :
+            alert("Sorry, you did not get a discount today :( ");
+            return totalBill;
+    }
+}
+console.log(calculateTotal(0, 100));
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -141,10 +141,10 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// let luckyNumber = Math.floor(Math.random() * 6);
-// let howMuch = prompt("What was your total today?");
-//
-// alert("Lucky number? It was " + luckyNumber + ". And you were paying.. " + howMuch + ". Good news, you ended up only paying " + calculateTotal(luckyNumber, howMuch));
+let luckyNumber = Math.floor(Math.random() * 6);
+let howMuch = prompt("What was your total today?");
+
+alert("Lucky number? It was " + luckyNumber + ". And you were paying.. " + howMuch + ". Good news, you ended up only paying " + calculateTotal(luckyNumber, howMuch));
 
 /**
  * TODO:
@@ -190,7 +190,11 @@ function clickBait() {
 
 }
  clickBait();
-            // }}
+
+
+
+
+// }}
     // let positiveOrNegative = magicNumber >= 0 ? alert("The number " + magicNumber + " is positive") : alert("The number is negative");
 
     //let isEven = (positiveOrNegative % 2 === 0);
