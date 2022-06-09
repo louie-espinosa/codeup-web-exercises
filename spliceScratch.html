@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Splice Experiment</title>
+</head>
+<body>
+
+<script>
+    let stuffInRoom = ["green cup", "laptop", "red cup", "Cody Hastings"]
+
+    let deletedStuff = stuffInRoom.splice(0, 3, "white coffee cup", "github cheat sheet", "Ken Howell")
+
+    console.log("Here's some deleted stuff " + deletedStuff.join(","));
+
+    console.log("Here's some stuff in the room after we spliced " + stuffInRoom.join(","));
+
+</script>
+</body>
+</html>
