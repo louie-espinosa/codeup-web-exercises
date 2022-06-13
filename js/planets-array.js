@@ -43,6 +43,6 @@
     console.log(planets);
 
     console.log("Sorting the planets array.");
-    planets.sort();git
-    gutgitconsole.log(planets);
+    planets.sort();
+    console.log(planets);
 })();
