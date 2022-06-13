@@ -49,18 +49,17 @@ person.sayHello = function() {
         {name: 'George', amount: 320}
     ];
     console.log(shoppers[0].amount)
-//We can use template strings to combine variables with string, for example:
-// let finalAmount = `$[shopper.name} $\\to include a dollar sign ${shopper.amount};
 
+//shoppers.forEach(shopper) => { //This arrow function allows us to omit the term "function" in the forEach.
          shoppers.forEach(function(shopper) {
              let finalAmount = shopper.amount - shopper.amount*.12;
              console.log(shopper.amount)
              if (shopper.amount > 200) {
             return console.log("Thank you for shopping with us. Your original bill was $" + shopper.amount
-                + " You saved $" + shopper.amount*.12.toFixed(2) + " and your new amount is $" + finalAmount);
+                + ", you saved $" + shopper.amount*.12.toFixed(2) + ", and your new amount is $" + finalAmount.toFixed(2));
         } else {
             return console.log(`Sorry, you do not qualify for a discount this time.
-                Your total is $ ${finalAmount.toFixed(2)}.`);
+                Your total is $ ${finalAmount.toFixed(2)}`);
         }
 
     })
