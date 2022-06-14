@@ -84,39 +84,76 @@ person.sayHello = function() {
             title: "The Neverending Story",
             author: {
                 firstName: "Michael",
-                lastName: "Ende"
+                lastName: "Ende",
+                age: 65
             }
         },
         {
             title: "What is a Woman?",
             author: {
                 firstName: "Matt",
-                lastName: "Walsh"
+                lastName: "Walsh",
+                age: 35
             }
         },
         {
-            title: "Tender Warrior",
+            title: "",
             author: {
-                firstName: "Stu",
-                lastName: "Weber"
+                firstName: "David",
+                lastName: "Griffin",
+                age: 82
             }
         },
         {
             title: "On Killing",
             author: {
                 firstName: "Dave",
-                lastName: "Grossman"
+                lastName: "Grossman",
+                age: 65
             }
         },
         {
             title: "Ever Wonder Why? And Other Controversial Essays",
             author: {
                 firstName: "Thomas",
-                lastName: "Sowell"
+                lastName: "Sowell",
+                age: 91
             }
         }
 ];
      console.log(books);
+
+     const titles = books.map(function(book){
+         return book.title;
+     });
+    console.log(titles);
+
+    const authors = books.filter(function(author) {
+        return "ABCDEFG".indexOf(author.author.firstName[0]) === -1;
+    });
+    console.log(authors);
+
+    // const sumAge = books.reduce(function(totalAgeSoFar, book) {
+    //     return totalAgeSoFar + book.author.age;
+    // }, 0);
+    // console.log(sumAge);
+    // console.log(sumAge / books.length);
+
+    //arrow function:
+    const sumAge = books.reduce((totalAgeSoFar, book) => totalAgeSoFar + book.author.age
+        , 0);
+
+    const minAge = books.reduce(function(minAgeSoFar, book){
+        return Math.min(minAgeSoFar, book.author.age);
+        // if(book.author.age < minAgeSoFar) {
+        //     return book.author.age;
+        // }
+        // return minAgeSoFar;
+
+
+    }, Infinity);
+    console.log(minAge)
+
     /**
      * TODO:
      * Loop through the books array and output the following information about
