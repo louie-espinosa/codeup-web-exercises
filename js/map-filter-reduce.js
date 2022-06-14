@@ -38,10 +38,9 @@ const users = [
 ];
 
 //Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
-const  tripleThreat = users.filter(function(user) {
+users.filter(function(user) {
     return user.languages.length >= 3;
 });
-console.log(tripleThreat);
 
 // Use .map to create an array of strings where each element is a user's email address
 const digiAddress = users.map(function(userAddress) {
@@ -58,13 +57,44 @@ console.log(poolOfWisdom);
 //part II asks for the average years of experience. So we need 35 divided by 5:
 console.log(poolOfWisdom / users.length);
 
-//     Use .reduce to get the longest email from the list of users.
+// Use .reduce to get the longest email from the list of users.
 //console.log() to test call
 console.log(users[0].email.length)
+//My attempt:
+// perhaps we can get the average length of email and write code for email length that is greater than the average?
+// const longAddress = users.reduce(function(totalEmailLength, user) {
+//         return totalEmailLength + user.email.length;
+//     }, 0)
+// console.log(longAddress);
 
+const longestEmail = users.reduce(function(longestEmailSoFar, user) {
+    if(user.email.length > longestEmailSoFar.length) {
+        return user.email; // return the longest length based on a boolean
+    }
+    return longestEmailSoFar;
 
+}, ""); //""The shortest value for a string is an empty string.
+console.log(longestEmail);
 
 //     Use .reduce to get the list of user's names in a single string. Example: Your instructors are: ryan, luis, zach, fernando, justin.
+
+let userNames = users.reduce(function(userNamesSoFar, user) {
+
+    return userNamesSoFar.push + (user.name);
+}, [])
+console.log();
+
+//BONUS
+// Use .reduce to get the unique list of languages from the list of users
+
+    let uniqueLanguages = users.reduce(function(setOfUniqueLanguagesSoFar, user) {
+    for (let language of user.languages) {
+        setOfUniqueLanguagesSoFar.add(language)
+    }
+    return setOfUniqueLanguagesSoFar;
+    }, new Set());
+    console.log(uniqueLanguages);
+})
 
 
 
