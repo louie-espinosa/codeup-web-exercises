@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Register With Us</title>
 </head>
 <body>
-$END$
+    <form method="POST" action="https://request-inspector.glitch.me/">
+
+        <label for="username">Username</label>
+            <input id="username" name="username" type="text" placeholder="Username"><br>
+        <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="password">
+        <br><br>
+
+        <label>
+            <textarea name="bio" rows=5" placeholder="Tell us about yourself"></textarea><br>
+        </label>
+
+        <h4>How did you hear about us</h4>
+        <label for="bb">
+            Billboard<input type="radio" name="option 1"  id="bb" value="a"><br>
+        </label>
+
+        <label for="ra">
+            Radio ad<input type="radio" name="option 2" id="ra" value="b"><br>
+        </label>
+        <label for="ia">
+            Internet ad<input type="radio" name="option 3" id="ia" value="c"><br>
+        </label>
+        <label for="other">
+            Other<input type="radio" name="option 4" id="other" value="d"><br>
+        </label>
+
+
+        <label><h4>What web browser are you using</h4>
+            <select name="browser preference">
+                <option value="chrome">Google Chrome</option>
+                <option value="firefox">Mozilla Firefox</option>
+                <option value="edge">Microsoft Edge</option>
+            </select><br><br>
+            <button style="color: green" value="submit">Send it</button><!--submit-->
+        </label>
+    </form>
 </body>
 </html>
