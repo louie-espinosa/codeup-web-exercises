@@ -2,3 +2,89 @@
     color: purple;
     text-decoration: underline;
 }
+h1.centered {
+    text-align: center;
+}
+h2 {
+    color: orange;
+    text-decoration: underline;
+}
+h3 {
+    color: #cd143c;
+    text-decoration: underline;
+}
+body {
+    background-color: transparent;
+    background-image: url("../img/pexcolor.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position-x: center;
+    background-position-y: top;
+    font-family: "American Typewriter";
+    color: white;
+}
+ul {
+    list-style: armenian;
+}
+table {
+    padding: 10px 15px;
+    font-size: larger;
+}
+tr {
+    padding: 10px 20px;
+    font-size: large;
+
+}
+td {
+    padding: 10px 20px;
+    font-size: large;
+}
+
+a:link {
+    color:red;
+}
+
+
+a:visited {
+    color:black;
+}
+
+
+a:hover {
+    color:blue;
+}
+
+
+a:active {
+    color:green;
+}
+.flip-box {
+    background-color: transparent;
+    width: 550px;
+    height: 350px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+}
+.flip-box-inner {
+    position: relative;
+    text-align: center;
+    transition: transform 1.8s;
+    transform-style: preserve-3d;
+}
+.flip-box:hover .flip-box-inner {
+    transform: rotateY(180deg);
+}
+.flip-box-front, .flip-box-back {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.flip-box-front {
+    background-color: #bbb;
+    color: black;
+}
+.flip-box-back {
+    background-color: #555;
+    color: white;
+    transform: rotateY(180deg);
+}
