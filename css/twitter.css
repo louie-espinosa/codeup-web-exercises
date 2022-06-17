@@ -19,7 +19,7 @@ body, html {
 header {
     background-image: url("https://picsum.photos/1200/300");
     background-size: cover;
-    min-height: 350px;
+    min-height: 300px;
     padding-top: 275px;
 }
 a {
@@ -35,7 +35,8 @@ a {
 .top-nav {
     background: var(--light-bg);
     position: fixed;
-    width: 100%
+    width: 100%;
+    z-index: 1000;
 
 }
 .nav {
@@ -63,7 +64,7 @@ a {
 .profile-image {
     position: absolute;
     top: 250px;
-    z-index: 1000;
+
 }
 .profile-items {
     padding: 0;
