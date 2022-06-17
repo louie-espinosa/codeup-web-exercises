@@ -1,0 +1,36 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+
+.a {
+    background-color: cornflowerblue;
+    margin: 5px;
+    border: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.b {
+    background-color: #cbffcd;
+    margin: 5px;
+    border: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.c {
+    background-color: khaki;
+    margin: 5px;
+    border: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.d {
+    background-color: palevioletred;
+    margin: 5px;
+    border: 10px;
+    padding: 5px;
+    border-radius: 10px;
+}
