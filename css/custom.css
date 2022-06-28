@@ -1,0 +1,9 @@
+.jumbotron {
+    height: 346px;
+    background-size: cover;
+    opacity: inherit;
+}
+img {
+    max-height: 200px;
+    width: 50%;
+}
