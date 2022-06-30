@@ -86,13 +86,21 @@
 
         // DOM Events exercise
 
+        //creating variables for my buttons
+        let btnOne = document.getElementById("btn1");
+        let btnTwo = document.getElementById("btn2");
+        let btnThree = document.getElementById("btn3");
+        let btnFour = document.getElementById("btn4");
+
         let listener = function (event) {
             mainHeader.innerHTML = "Javascript is Cool";
-            alert("Fusion complete")
+            btnOne.innerHTML = "Booyah";
+            // alert("Fusion complete")
         }
         let listenerTwo = function (event) {
             subHeader.style.color = "blue";
-            alert("Bibidi babadi boo")
+            btnTwo.innerHTML = "Cash me outside"
+
         }
         let listenerThree = function (event) {
             for (let i = 0; i < listItems.length; i++) {
@@ -100,11 +108,13 @@
                     //alternative is: for (let i = 0; i < listItems.length; i += 2) { }
                     console.log(listItems[i]);
                     listItems[i].style.color = "grey";
+                    btnThree.innerHTML = "How bout dat"
                 }
             }
         }
         let listenerFour = function (event) {
             subParagraphs[0].innerText = "Mission Accomplished!";
+            btnFour.innerHTML = "That's enough!"
         }
 
         // register the listener to handle clicks on btn1
