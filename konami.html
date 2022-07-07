@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+    <h1>Konami Code</h1>
+
+    <script>
+        "use strict";
+        document.addEventListener("DOMContentLoaded", function () {
+            //any JS in here will start executing AFTER the DOM loads.
+
+            // 1. Allow the user to enter the Konami Code: "↑ ↑ ↓ ↓ ← → ← → b a enter" (the return key)
+            // 2. Find the matching sequence for each key in the Konami Code.
+            // 3. Don't worry about capital a or b just check for lowercase.
+            // 4. After the correct Konami Code sequence is inputted, have the script alert the user:
+
+
+            //"keypress" did NOT register the event for arrow presses, but keydown did.
+            let konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+            let codeComplete = 0;
+
+
+            const cheatCodes = function (event) {
+                console.log(event.key);
+
+
+
+
+                if (konami.indexOf(event.key) < 0 || event.key !== konami[codeComplete]) {
+                    codeComplete = 0
+                    return;
+
+                }
+                codeComplete++;
+
+                if (konami.length === codeComplete) {
+                    codeComplete = 0;
+                    alert("You have added 30 lives but you still aint beating this game! HAHAHAHA!");
+                }
+
+            };
+
+            document.addEventListener('keydown', cheatCodes, false)
+
+
+            //global so we can keep track of all keys pressed
+            // let keysPressed = [];
+            //
+            // document.addEventListener("keyup", function(event) {
+            //     keysPressed.push(event.key);
+            //
+            //     if(enteredKonamiCode()) {
+            //         alert("you get 30 lives!")
+            //     }
+            // });
+            //
+            // function enteredKonamiCode() {
+            //     const konamiCode = "ArrowUp,ArrowUp,ArrowDown,ArrowDown,ArrowLeft,ArrowRight,ArrowLeft,ArrowRight,b,a,Enter";
+            //     if(keysPressed.toString().includes(konamiCode) === true) {
+            //         keysPressed.length = 0
+            //         return true;
+            //     }
+            //     return false;
+            // }
+
+        });
+
+        //let searchFor = ["red", "blue"]
+        // let searchIn = ["cat", "red", "blue", "green"]
+        // console.log(searchFor.toString());
+        // console.log(searchIn.toString());
+        //
+        // console.log(searchIn.toString().includes((searchFor.toString())));
+
+
+
+        // Bonus:
+        // 1. Change the background screen.
+        // 2. Play a sound.
+        // 3. Be creative!
+    </script>
+</body>
+</html>
