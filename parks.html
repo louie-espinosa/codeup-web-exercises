@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom Traversal Techniques</title>]
+    <style>
+        .invisible {
+            visibility: hidden;
+        }
+
+        .last-fact {
+            color: yellow;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>National Parks FAQ</h1>
+<dl>
+    <dt>How many people visit the national parks?</dt>
+    <dd class="invisible">Total recreation visitors to the national parks in 2018: 318,211,833.</dd>
+
+    <dt>How old is the National Park System?</dt>
+    <dd class="invisible">The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916.</dd>
+
+    <dt>How many employees are in the National Park Service?</dt>
+    <dd class="invisible">Permanent, temporary, and seasonal employees: More than 20,000</dd>
+
+    <dt>What is the origin of the National Park Service arrowhead?</dt>
+    <dd class="invisible">The arrowhead was authorized as the official National Park Service emblem by the Secretary of the Interior on July 20, 1951.</dd>
+
+    <dt>How many areas are in the National Park System?</dt>
+    <dd class="invisible">The system includes 419 areas covering more than 85 million acres in every state, the District of Columbia, American Samoa, Guam, Puerto Rico, and the Virgin Islands.</dd>
+
+    <dt>What is the largest national park site?</dt>
+    <dd class="invisible">Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres.</dd>
+
+    <dt>What is the National Park Service budget?</dt>
+    <dd class="invisible">Fiscal Year (FY) 2014 Enacted: $2.98 billion.</dd>
+
+    <dt>Can I bring my pet to a national park?</dt>
+    <dd class="invisible">Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities.</dd>
+
+    <dt>How do I apply for a job with the National Park Service?</dt>
+    <dd class="invisible">National Park Service jobs, including both permanent and seasonal positions, are listed on USAJOBs.</dd>
+
+    <dt>What do I need to know about driving off road in national parks?</dt>
+    <dd class="invisible">Before you head out, check with the national parks that you intend to visit. In many national parks, off-road driving is illegal. Where off-road driving is allowed, the National Park Service regulates it.</dd>
+</dl>
+
+<button id="inviso-toggle">Toggle Visibility</button>
+
+
+
+<!--    Under the FAQ, add 3 unordered lists like above. Each list should contain a national park name in an h3 element, and a ul of 4 facts about the park.-->
+<h1>Parks List</h1>
+<div id="pp-div">
+    <h3 id="pp-heading">Pineapple on Pizza Controversy</h3>
+    <ul id="pineapple-pizza">
+        <li>Some are against the idea as it originated in Canada</li>
+        <li>First of all, it is scientifically proven that pineapple belongs on pizza.</li>
+        <li>Carlsbad Caverns</li>
+        <li>Denali</li>
+
+    </ul>
+</div>
+<div id="color-view-div">
+    <h3 id="color-view-heading">Tetrachromacy and color blindness</h3>
+    <ul id="color-view">
+        <li>Humans are trichromatic and can see short, middle, and long wavelenghts</li>
+
+        <li>Dogs and most mammals are dichromatic and see much less colors</li>
+
+        <li>Some birds, fish, butterflies, and bees are tetrachromats and can see many millions of colors.
+            These Tetrachromats have four types of photoreceptors, and can even see colors in the UV spectrum</li>
+
+        <li>The genes responsible for two of our receptors, or cones are found in the x chromosome which is why color-blindness occurs mostly in men.</li>
+
+    </ul>
+</div>
+<div id="oxygen-cancer-div">
+    <h3 id="oxygen-cancer-heading">Oxygen and cancer</h3>
+    <ul id="oxygen-cancer">
+        <li>In 1931 Dr. Warburg won his first Nobel Prize for proving cancer is caused by a lack of oxygen respiration in cells.
+            He stated in an article titled "The Prime Cause and Prevention of Cancer... the cause of cancer is no longer a mystery,
+            we know it occurs whenever any cell is denied 60% of its oxygen requirements..." </li>
+
+        <li>Summarized in a few words, the prime cause of cancer is the replacement of the respiration of oxygen in normal body cells by a fermentation of sugar.</li>
+
+        <li>Fermentation allows these cells to survive, but they can no longer perform any functions in the body or communicate
+            effectively with the body. Consequently, these cells can only multiply and grow. And may become cancerous.
+            Or perhaps it would be more accurate to say, they degrade into cancer cells that no longer serve your body, but live to survive...</li>
+
+        <li>Lack of nutrients in cells is the main cause of poor cellular oxygen metabolism. If our testing is correct, this is the case about 75% of the time.
+            It starts with pathogens. Specifically, large pathogens that produce many toxins.
+            Mostly this pathogen is Candida. Mold or other fungi, and Lyme bacterium could also be the cause.
+            It is mostly from Candida because of the introduction of antibiotics many decades ago. These destroy friendly bacteria but not Candida.
+            So it overgrows in the intestinal tract and spreads throughout the body.</li>
+
+    </ul>
+</div>
+<!--    Create a button that, when clicked, makes the last li in each ul have a yellow background.-->
+<button id="last-facts">Yellow the last fact</button>
+
+<!--JS HERE-->
+<script>
+    //1. get a reference for the button
+    const myToggle = document.getElementById("inviso-toggle");
+
+    //2. add a click event listener to the button
+    myToggle.addEventListener("click", function (event) {
+        //3. in the event listener function, toggle the class invisible
+        //3a. get all the dds
+        //3b. for each dd, toggle its invisible class
+        const myDDs = document.querySelectorAll("dd"); //"Must use a for-i loop when using, getElementsByTagName.//
+        console.log(myDDs)
+        myDDs.forEach(function(dd) {
+            dd.classList.toggle("invisible")
+        });
+
+    });
+
+    //BONUS
+    //1. target all dt element
+    const myDTs = document.querySelectorAll("dt");
+    myDTs.forEach(function(dt) {
+
+        //2. add a click event listener to each dt element
+        dt.addEventListener("click", function (event) {
+            //3. when it is clicked turn its background color to green
+            this.style.backgroundColor = "green";
+        });
+    });
+
+    //Begin DOM Traversal techniques exercise
+
+    //JS for my button
+    const lastChild = document.querySelector("#last-facts");
+
+    //2. add a click event listener to the button
+    lastChild.addEventListener("click", function (event) {
+
+        const lastLIs = document.getElementsByTagName("ul");
+        for (let i = 0; i < lastLIs.length; i++) {
+            lastLIs[i].lastElementChild.classList.toggle("last-fact");
+
+
+        }
+
+    });
+    //   When any h3 is clicked, the lis underneath it should be bolded. Use fontWeight = "bold" to achieve this.
+    // Hint: you should use this in the event listener to access the next sibling of the h3 that is clicked.
+    // Also, an h3 is like an aunt or uncle to its corresponding lis.
+
+    const myH3s = document.querySelectorAll("h3");
+    myH3s.forEach(function(h3) {
+
+        //2. add a click event listener
+        h3.addEventListener("dblclick", function (event) {
+            //3. when it is clicked turn its background color to green
+            this.style.fontWeight = "bold";
+            this.style.fontStyle = "italic";
+        });
+    });
+        //When any list item is clicked, first li of the parent ul should have a font color of blue.
+        // Hint: you should again rely on this in the li event handler.
+
+        const firstBlues = document.querySelectorAll("li");
+
+        firstBlues.forEach(function(li) {
+            li.addEventListener("click", function (event) {
+            this.parentElement.firstElementChild.style.color = "blue";
+            });
+        });
+
+        //BONUS
+
+
+
+
+
+
+</script>
+</body>
+</html>
