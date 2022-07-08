@@ -9,7 +9,19 @@
         }
 
         .last-fact {
-            color: yellow;
+            background-color: yellow;
+        }
+        .float-l {
+            float: left;
+        }
+        .float-r {
+            float: right;
+        }
+        .clear {
+            clear: both;
+        }
+        img {
+            background-repeat: repeat-y;
         }
 
 
@@ -17,7 +29,7 @@
 </head>
 <body>
 <h1>National Parks FAQ</h1>
-<dl>
+<dl class="float">
     <dt>How many people visit the national parks?</dt>
     <dd class="invisible">Total recreation visitors to the national parks in 2018: 318,211,833.</dd>
 
@@ -59,18 +71,20 @@
     <h3 id="pp-heading">Pineapple on Pizza Controversy</h3>
     <ul id="pineapple-pizza">
         <li>Some are against the idea as it originated in Canada</li>
-        <li>First of all, it is scientifically proven that pineapple belongs on pizza.</li>
-        <li>Carlsbad Caverns</li>
-        <li>Denali</li>
+        <li>Others argue that it is scientifically proven that pineapple belongs on pizza due top the depth of flavor it adds.</li>
+        <li>Traditionalists argue that it violates tradition and argue that it makes for soggy pizza</li>
+        <li>Even so, some would argue that tradition was based on ingredients available
+            to peasants in the region at that time and that other nearby regions that had
+            access to more ingredients used those ingredients.</li>
 
     </ul>
 </div>
 <div id="color-view-div">
-    <h3 id="color-view-heading">Tetrachromacy and color blindness</h3>
+    <h3 id="color-view-heading">Color blindness</h3>
     <ul id="color-view">
-        <li>Humans are trichromatic and can see short, middle, and long wavelenghts</li>
+        <li>Humans are trichromatic, having three receptors or cones, and can see short, middle, and long wavelengths</li>
 
-        <li>Dogs and most mammals are dichromatic and see much less colors</li>
+        <li>Dogs and most mammals are dichromatic, so they see much less colors</li>
 
         <li>Some birds, fish, butterflies, and bees are tetrachromats and can see many millions of colors.
             These Tetrachromats have four types of photoreceptors, and can even see colors in the UV spectrum</li>
@@ -133,17 +147,18 @@
         });
     });
 
+
     //Begin DOM Traversal techniques exercise
 
     //JS for my button
-    const lastChild = document.querySelector("#last-facts");
+    const lastChildButton = document.querySelector("#last-facts");
 
     //2. add a click event listener to the button
-    lastChild.addEventListener("click", function (event) {
+    lastChildButton.addEventListener("click", function (event) {
 
-        const lastLIs = document.getElementsByTagName("ul");
-        for (let i = 0; i < lastLIs.length; i++) {
-            lastLIs[i].lastElementChild.classList.toggle("last-fact");
+        const uls = document.getElementsByTagName("ul");
+        for (let i = 0; i < uls.length; i++) {
+            uls[i].lastElementChild.classList.toggle("last-fact");
 
 
         }
@@ -158,9 +173,9 @@
 
         //2. add a click event listener
         h3.addEventListener("dblclick", function (event) {
-            //3. when it is clicked turn its background color to green
-            this.style.fontWeight = "bold";
-            this.style.fontStyle = "italic";
+            //the h3s nephews, or siblings--(divs)--children should be bolded.
+            this.nextElementSibling.style.fontWeight = "bold";
+            this.nextElementSibling.style.fontStyle = "italic";
         });
     });
         //When any list item is clicked, first li of the parent ul should have a font color of blue.
