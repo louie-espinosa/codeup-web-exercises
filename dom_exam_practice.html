@@ -82,12 +82,20 @@
             a1.setAttribute("href", "https://java.codeup.com"); //The html code itself does not change, but the output in the document does.
 
             // problem #4
-            // change the background of the body to green
+            // when the body is clicked change the background color of the body to navajo white
             // 1. get a reference to the body
-            // 2. set backgroundColor property of its style property to "green"
-            const body = document.querySelector("body");
+            // 2. set backgroundColor property of its style property to "navajo white"
+            const myBody = document.querySelector("body");
+            myBody.addEventListener("dblclick", function() {
+                //Using an if else statement to make a toggle//
+                if(this.style.backgroundColor === "navajowhite") {
+                    this.style.backgroundColor = "";
+                } else {
+                    this.style.backgroundColor = "navajowhite";
+                }
 
-            body.style.backgroundColor = "green";
+            })
+
 
             // problem #5
             // when the button with id b5, toggle the hotpinkText class for the h1 with id h1-1
@@ -103,22 +111,38 @@
             })
 
 
-            // problem 6: add 5px red border to paragraph with id p6 when you hover over it
-            // and remove the border when you stop hovering over it
+            // problem 6:
+            //when paragraph p6 is hovered over add
+            // add 5px red border. When paragraph p6 hovering stops, remove the border
             // you can use the red-border class to make this a little easier
             // 1. make event handlers for mouseenter and mouseleave for paragraph p4
             // 2. use style property on p6 (or use the this keyword) and set border to "5px solid red"
             //      you could also add or toggle the class "red-border"
 
+            const p6 = document.getElementById("p6")
+               p6.addEventListener("mouseenter", function() {
+                p6.classList.add("red-border")
+                });
+            p6.addEventListener("mouseleave", function() {
+                p6.classList.remove("red-border");
+            });
 
-            // problem 7: when the user types in the text input with id "input7"
-            // , copy what was typed into the paragraph with id p7
+
+            // problem 7: when the user types in the text-input with id "text7"
+            // , copy the value and assign it to p7's text
             // 1. get a reference to the text field with id input7
             // 2. add a key event listener to the text field
             // 3. inside the event listener, get a reference to the paragraph p7
             // 4. set the paragraph's text to the input's VALUE property
 
-
+            const input7 = document.getElementById("text7");
+            input7.addEventListener("keyup", function() {
+                //assign a variable to the input value
+               const inputValue = input7.value
+                //select p7
+                const p7 = document.getElementById("p7")
+                p7.innerHTML = inputValue;
+            })
 
         });
 
