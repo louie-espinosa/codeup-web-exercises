@@ -16,6 +16,7 @@
     <thead>
     <tr>
         <th>Title</th>
+        <th>Manufacturer</th>
         <th>Quantity</th>
         <th>Price</th>
         <th>Categories</th>
@@ -46,6 +47,7 @@
             appendPrTable.innerHTML += `<!--build as a string template literal-->
             <tr>
             <td>${tool.title}</td>
+            <td>${tool.manufacturer}</td>
             <td>${tool.quantity}</td>
             <td>${tool.price}</td>
             <td>${tool.categories.join(", ")}</td>

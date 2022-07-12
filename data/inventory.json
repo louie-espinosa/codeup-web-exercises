@@ -1,6 +1,8 @@
 [
     {
+
         "title": "Hammer",
+        "manufacturer": "Craftsman",
         "quantity": 25,
         "categories": [
             "tool"
@@ -8,6 +10,7 @@
         "price": 20
     }, {
         "title": "Drill",
+        "manufacturer": "Milwaukee",
         "quantity": 5,
         "categories": [
             "tool",
@@ -16,6 +19,7 @@
         "price": 100
     }, {
         "title": "Mower",
+        "manufacturer": "Dewalt",
         "quantity": 5,
         "categories": [
             "tool",
@@ -25,6 +29,7 @@
         "price": 200
     }, {
         "title": "Screwdrivers",
+        "manufacturer": "Klein",
         "quantity": 25,
         "categories": [
             "tool"
