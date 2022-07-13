@@ -29,7 +29,7 @@
         "price": 200
     }, {
         "title": "Screwdrivers",
-        "manufacturer": "Klein",
+        "manufacturer": "Klein ",
         "quantity": 25,
         "categories": [
             "tool"

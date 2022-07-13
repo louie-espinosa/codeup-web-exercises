@@ -3,8 +3,15 @@
 <head>
     <title>Online Store</title>
     <style>
+        body>h1 {
+            text-align: center;
+        }
         th {
             padding: 10px 30px ;
+            text-decoration: underline;
+        }
+        td {
+
         }
     </style>
 </head>
@@ -25,26 +32,28 @@
     <tbody id="insertProducts"></tbody>
 </table>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script></script>
 
 <script>
+    "use strict";
     (async function() {
         "use strict";
-        // TODO: Create an AJAX GET request for the file: data/inventory.json
-        async function  getInventory() {
-            return await fetch("data/inventory.json")
-            .then(async function (response) {
-                return await response.json();
-            })
-        }
+        document.addEventListener("DOMContentLoaded", async function () {
+            // TODO: Create an AJAX GET request for the file: data/inventory.json
+            async function getInventory() {
+                return await fetch("data/inventory.json")
+                    .then(async function (response) {
+                        return await response.json();
+                    })
+            }
 
-        // TODO: Take the data from inventory.json and append it to the products table
+            // TODO: Take the data from inventory.json and append it to the products table
 
-        const appendPrTable = document.getElementById("insertProducts");
-        const tools = (await getInventory()); //we want data so can't use html DOM
-        console.log(tools);
-        tools.forEach(function(tool) {
-            appendPrTable.innerHTML += `<!--build as a string template literal-->
+            const appendPrTable = document.getElementById("insertProducts");
+            const tools = (await getInventory()); //we want data so can't use html DOM
+            console.log(tools);
+            tools.forEach(function (tool) {
+                appendPrTable.innerHTML += `<!--build as a string template literal-->
             <tr>
             <td>${tool.title}</td>
             <td>${tool.manufacturer}</td>
@@ -58,15 +67,13 @@
 
 
             `
-        });
+            });
 
 
-
-
-
-        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-        //             its contents and fields
-        //       HINT: You will want to target #insertProducts for your new HTML elements
+            //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+            //             its contents and fields
+            //       HINT: You will want to target #insertProducts for your new HTML elements
+        })
     })();
 </script>
 

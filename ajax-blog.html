@@ -3,9 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajax Blog</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #333333;
+            color: navajowhite;
+        }
+        .bg-img {
+
+        }
+        .img-1 {
+            position: absolute;
+            top:  10px;
+            right: 10px
+        }
+        .img-2 {
+            position: absolute;
+            top:  10px;
+            left: 10px
+        }
+        li {
+            text-decoration: underline;
+        }
+        body>h1 {
+            text-align: center;
+
+
+        }
+
+        p {
+            padding: .5em 1em;
+            margin: 0;
+        }
+        .pretty {
+            text-align: center;
+            text-decoration: underline;
+            font-family: sans-serif;
+        }
+    </style>
 </head>
 <body>
+    <h1>Louie's Ajax Blog</h1>
+    <img class="img-1" src="img/codeup-arrow.png">
+    <img class="img-2" src="img/codeup-arrow.png">
 
-<div id="posts"></div>
+    <div id="posts"><!--FANCY JSON MAGIC HAPPENS HERE--></div>
+
+<script>
+    (function() {
+        "use strict";
+
+        // Download blog.json to your data directory from before.
+        //     Use Ajax to load the contents of blog.json and add the data from it to your #insertTopics ul.
+        //     Add additional entries to blog.json and make sure your changes are reflected on the page.
+           const getBlogs =  fetch("data/blog.json").then(function (response) {
+
+               // if (!response.ok) {
+               //      console.log("The request did not succeed!");
+               //  }
+                return response.json();
+            })
+                .then(onSuccess)
+
+                .catch(onFail)
+
+                .finally(stopLoading)
+
+
+        function onFail(error) {
+                console.log("ERROR!!!");
+                console.log("Error message: " + error.message);
+            }
+
+            function stopLoading() {
+                //this function runs regardless
+            }
+        function onSuccess(data) {
+            const appendLIs = document.getElementById("posts")
+            console.log("At last, we have the JSON data we want: " + data);
+            console.log(data);
+            for (let i = 0; i < data.length; i++){
+                appendLIs.innerHTML += `
+            <h2>${data[i].title}</h2>
+            <li>${data[i].author}</li>
+            <p>${data[i].categories.join(", ")}</p>
+            <p>${data[i].content}</p><br>
+            <li>${data[i].date}</li><br><br>
+
+            `
+            }
+        }
+
+
+            //take the data from blog.json and append it to the ul.
+
+        // const appendLIs = document.getElementById("insertTopics")
+
+
+            //     appendLIs[i].innerHTML = `
+            // <li>${data.title}</li>
+            // <li>${blog.content}</li>
+            // <li>${blog.categories}</li>
+            // <li>${blog.date}</li>
+            // `
+
+
+
+
+
+    })();
+</script>
 </body>
 </html>
