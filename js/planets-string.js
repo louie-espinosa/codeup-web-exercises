@@ -1,4 +1,4 @@
-(function(){
+{
     "use strict";
 
     let planetsString = "Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune";
@@ -43,4 +43,4 @@
     console.log( arrangePlanets.join(""));
     // console.log("This is listOfPlanets joined : " + listOfPlanets.join());
 
-})();
+}

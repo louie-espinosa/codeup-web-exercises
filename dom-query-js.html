@@ -38,7 +38,7 @@
 
 
 <script>
-    (function() {
+    {
         "use strict";
         // TODO: Uncomment next line and get the main header element by id
         var mainHeader = document.getElementById("main-header");
@@ -63,7 +63,7 @@
         //    }
         // TODO: Set text color of li with dbid = 1 to blue
         console.log(listItems[0].getAttribute("data-dbid"));
-           listItems[0].style.color = "blue";
+        listItems[0].style.color = "blue";
         //when you want to look through all list items:
         // for (let i = 0; i < listItems.length; i++) {
         //     if (listItems[i].getAttribute("data-dbid") == 1) {
@@ -76,8 +76,8 @@
         let subParagraphs = document.getElementsByClassName("sub-paragraph");
         for (let i = 0; i < subParagraphs.length; i++) {
 
-                console.log(subParagraphs[i]);
-            }
+            console.log(subParagraphs[i]);
+        }
 
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
@@ -123,7 +123,7 @@
         document.getElementById('btn3').addEventListener('click', listenerThree);
         document.getElementById('btn4').addEventListener('click', listenerFour);
 
-    })();
+    }
 </script>
 </body>
 </html>

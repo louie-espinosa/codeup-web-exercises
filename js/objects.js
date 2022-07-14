@@ -1,4 +1,4 @@
-(function() {
+{
     "use strict";
 
     /**
@@ -203,4 +203,4 @@ Author: ${book.author.firstName} ${book.author.lastName}
      *   `showBookInfo` function.
      */
 
-})();
+}

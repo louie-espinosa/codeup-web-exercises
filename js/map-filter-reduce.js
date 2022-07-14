@@ -1,3 +1,4 @@
+{
 "use strict";
 const users = [
     {
@@ -94,7 +95,7 @@ console.log();
     return setOfUniqueLanguagesSoFar;
     }, new Set());
     console.log(uniqueLanguages);
-})
+}
 
 
 

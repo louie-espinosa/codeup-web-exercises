@@ -1,4 +1,4 @@
-(function(){
+{
     "use strict";
 
     let planets = [
@@ -45,4 +45,4 @@
     console.log("Sorting the planets array.");
     planets.sort();
     console.log(planets);
-})();
+}
