@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>First Mapbox Map</title>
+    <title>First Weather Map</title>
     <!-- Mapbox CSS -->
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <!-- Custom CSS -->
@@ -63,6 +63,20 @@
             center: [-98.4916, 29.4252]
         });
 
+        let queryParams = new URLSearchParams({
+            APPID: OPEN_WEATHER_API_KEY,
+            q: "San Antonio, US",
+            units: "imperial"
+        });
+        // concat the query parameters onto the URL
+        fetch("http://api.openweathermap.org/data/2.5/forecast?" + queryParams, {
+                method: "GET"
+            }
+        ).then(async function(response) {
+            // use await to wait for the json data and then do something with it
+            console.log(await response.json());
+        });
+
 
         //TODO:
         // Generate a map that shows the city with your favorite restaurant using geocoding.
@@ -120,15 +134,15 @@
         // });
 
         //drop a marker with a popup
-         function dropMarkerWPopup (address, token = MAPBOX_API_KEY, draggable = true) {
+        function dropMarkerWPopup (address, token = MAPBOX_API_KEY, draggable = true) {
             geocode(address, token).then(function(mapData) {
 
                 let marker1 = new mapboxgl.Marker(el, {draggable})
                 let popup1 = new mapboxgl.Popup()
 
-                    marker1.setLngLat(mapData.features[0].center)
-                    marker1.addTo(map)
-                    marker1.setPopup(popup1);
+                marker1.setLngLat(mapData.features[0].center)
+                marker1.addTo(map)
+                marker1.setPopup(popup1);
 
 
 
