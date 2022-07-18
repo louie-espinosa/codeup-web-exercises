@@ -1,118 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>First Weather Map</title>
-    <!-- Mapbox CSS -->
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-    <!-- Custom CSS -->
+    <meta charset="utf-8">
+    <title>Weather Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
     <style>
-        #map-main {
-            /* the width and height may be set to any size */
-            width: 40%;
-            height: 400px;
-            border: 2px solid grey;
-            border-radius: 10px;
-            display: flex;
+        body {
+            margin: 0;
+            padding: 0;
         }
-        #map-sub {
-            width: 40%;
-            height: 200px;
-            border: 2px solid grey;
-            border-radius: 10px;
-        }
-        .myMarker {
-            background-image: url('img/restaurant.png');
-            background-size: cover;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .mapboxgl-popup {
-            max-width: 200px;
-        }
-
-        .mapboxgl-popup-content {
+        body>h1 {
             text-align: center;
-            font-family: 'Open Sans', sans-serif;
+            font-size: 3rem;
+            color: #f5f5f5;
+            text-shadow:
+                    0px -2px 4px #fff,
+                    0px -2px 10px #FF3,
+                    0px -10px 20px #F90,
+                    0px -20px 40px #C33;
+            margin-top: 5px;
+
         }
+        #map {
+            position: absolute;
+            height: 700px;
+            bottom: 0;
+            right: 0;
+            width: 25%;
+            border: 2px solid grey;
+            border-radius: 15px;
 
-
+        }
+        .bg-img {
+            background-image: url("img/YG weather2.jpg");
+            background-size: cover;
+        }
     </style>
 </head>
-<body>
+<body class="bg-img">
+<style>
+    .coordinates {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        position: absolute;
+        bottom: 40px;
+        left: 10px;
+        padding: 5px 10px;
+        margin: 0;
+        font-size: 11px;
+        line-height: 18px;
+        border-radius: 3px;
+        display: none;
+    }
+</style>
 
-<h1>My First Weather Map!</h1>
-
-<!-- The HTML element that serves as the main Mapbox container -->
-<div id='map-main'></div>
-<div id='map-sub'></div>
-
-<button id="drop-marker">Drop Marker</button>
-
-<!-- Mapbox JS -->
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
 
-<!-- Custom JS-->
-<script src="js/keys.js"></script>
-<script src="js/mapbox-geocoder-utils.js"></script>
+
+<h1>Scorchin Summer!<img src='img/hot.png'></h1>
+<div id="map"></div>
+<pre id="coordinates" class="coordinates"></pre>
+
+
+
+
+
+
+
 <script>
-    (async function () {
+    mapboxgl.accessToken = 'pk.eyJ1IjoibGFlc3Bpbm9zYSIsImEiOiJjbDVsNDhmbzkwZzl0M2JsdnRqamVvZGgxIn0.NJF7zdZWmD2r8pYtTwp9gw';
+    const coordinates = document.getElementById('coordinates');
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [0, 0],
+        zoom: 2
+    });
 
-        //Setting up the main map API
-        mapboxgl.accessToken = MAPBOX_API_KEY;
-        const map = new mapboxgl.Map({
-            container: 'map-main',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            zoom: 10,
-            center: [-98.4916, 29.4252]
-        });
-        //sub-map
-        mapboxgl.accessToken = MAPBOX_API_KEY;
-        const map2 = new mapboxgl.Map({
-            container: 'map-sub',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            zoom: 10,
-            center: [-98.4916, 29.4252]
-        });
+    const marker = new mapboxgl.Marker({
+        draggable: true
+    })
+        .setLngLat([0, 0])
+        .addTo(map);
 
-        //Setting up the weather API
-        let queryParams = new URLSearchParams({
-            APPID: OPEN_WEATHER_API_KEY,
-            q: "San Antonio, US",
-            units: "imperial"
-        });
-        // concat the URL search parameters onto the weathermap URL
-        fetch("http://api.openweathermap.org/data/2.5/forecast?" + queryParams, {
-                method: "GET"
-            }
-        ).then(async function(response) {
-            // use await to wait for the json data and then do something with it when ready
-            console.log(await response.json());
-        });
+    function onDragEnd() {
+        const lngLat = marker.getLngLat();
+        coordinates.style.display = 'block';
+        coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+    }
 
-
-        //Creating a standalone popup per the lesson, and it worked!
-        // let popup = new mapboxgl.Popup()
-        //     .setLngLat([-98.489615, 29.426827])
-        //     // or .setLngLat(await geocode(address);, or setLngLat(variable)
-        //         .setHTML("<p>Codeup Rocks!</p>")
-        //         popup.addTo(map)
-
-
-        //customize my marker
-        // el.classList.add("myMarker");
-        const el = document.createElement('div');
-        el.className = 'marker myMarker'; //two class in className for the
-
-
-
-
-
-    })();
-
+    marker.on('dragend', onDragEnd);
 </script>
+
 </body>
+</html>
 </html>
