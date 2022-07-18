@@ -79,8 +79,8 @@
         blacksBBQ = await geocode("3110 Guadalupe St, Austin TX");
         eateries.push(blacksBBQ);
 
-        home = await geocode("8012 forest xing, live Oak, Tx 78233");
-        eateries.push(home);
+        fredericksburg = await geocode("Fredericksburg, TX");
+        eateries.push(fredericksburg);
         console.log(eateries);
 
         document.getElementById("drop-marker").addEventListener("click", async function (e) {
@@ -95,7 +95,7 @@
                 marker.addTo(map)
 
                 let popup = new mapboxgl.Popup()
-
+                    .setHTML('<p>Info goes here</p>')
                 marker.setPopup(popup);
 
                 let zoomOut = map.getZoom();
