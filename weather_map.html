@@ -7,10 +7,17 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <!-- Custom CSS -->
     <style>
-        #map {
+        #map-main {
             /* the width and height may be set to any size */
-            width: 100%;
-            height: 500px;
+            width: 40%;
+            height: 400px;
+            border: 2px solid grey;
+            border-radius: 10px;
+            display: flex;
+        }
+        #map-sub {
+            width: 40%;
+            height: 200px;
             border: 2px solid grey;
             border-radius: 10px;
         }
@@ -36,12 +43,12 @@
 </head>
 <body>
 
-<h1>My First Mapbox Map!</h1>
+<h1>My First Weather Map!</h1>
 
-<!-- The HTML element that serves as the Mapbox container -->
-<div id='map'></div>
+<!-- The HTML element that serves as the main Mapbox container -->
+<div id='map-main'></div>
+<div id='map-sub'></div>
 
-<button id="zoom-in">Zoom In</button>
 <button id="drop-marker">Drop Marker</button>
 
 <!-- Mapbox JS -->
@@ -50,124 +57,55 @@
 
 <!-- Custom JS-->
 <script src="js/keys.js"></script>
-<!--<script src="js/mapbox-geocoder-utils.js\"></script>-->
+<script src="js/mapbox-geocoder-utils.js"></script>
 <script>
     (async function () {
 
-
+        //Setting up the main map API
         mapboxgl.accessToken = MAPBOX_API_KEY;
         const map = new mapboxgl.Map({
-            container: 'map',
+            container: 'map-main',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 10,
+            center: [-98.4916, 29.4252]
+        });
+        //sub-map
+        mapboxgl.accessToken = MAPBOX_API_KEY;
+        const map2 = new mapboxgl.Map({
+            container: 'map-sub',
             style: 'mapbox://styles/mapbox/streets-v9',
             zoom: 10,
             center: [-98.4916, 29.4252]
         });
 
+        //Setting up the weather API
         let queryParams = new URLSearchParams({
             APPID: OPEN_WEATHER_API_KEY,
             q: "San Antonio, US",
             units: "imperial"
         });
-        // concat the query parameters onto the URL
+        // concat the URL search parameters onto the weathermap URL
         fetch("http://api.openweathermap.org/data/2.5/forecast?" + queryParams, {
                 method: "GET"
             }
         ).then(async function(response) {
-            // use await to wait for the json data and then do something with it
+            // use await to wait for the json data and then do something with it when ready
             console.log(await response.json());
         });
 
 
-        //TODO:
-        // Generate a map that shows the city with your favorite restaurant using geocoding.
-        //     Redraw the map of the above location at zoom levels 5, 15, and 20. Do this by simply changing the value of zoom level where
-        //     the map properties are initially set and refresh the page to see the changes. Can the zoom be changed programmatically after the
-        //     initial map is drawn?
-        //     Create a marker on your map of the exact location of your favorite restaurant set the zoom to allow for best viewing distance.
-        //     Create a popup with the name of the restaurant.
-        //     Make sure the info window does not display until the marker has been clicked on.
-        //     Refactor your code to display at least three of your favorite restaurants with information about each. Create an array of objects
-        //     with information about each restaurant to accomplish this. Use a .forEach() loop rather than a for loop.
-
-        //geocoding mapbox function
-        function geocode(address, token = MAPBOX_API_KEY) {
-            let url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-            return fetch(`${url}${encodeURIComponent(address)}.json?access_token=${token}`)
-                .then( async function(res) {
-                    const data = await res.json();
-                    console.log(data);
-                    return data;
-                });
-
-        }
+        //Creating a standalone popup per the lesson, and it worked!
+        // let popup = new mapboxgl.Popup()
+        //     .setLngLat([-98.489615, 29.426827])
+        //     // or .setLngLat(await geocode(address);, or setLngLat(variable)
+        //         .setHTML("<p>Codeup Rocks!</p>")
+        //         popup.addTo(map)
 
 
-        // let restaurants = []
-        // let locality = await geocode("lupe tortilla, 21103 US Highway 281 North, San Antonio, TX");
-        // restaurants.push(locality);
-        // locality = await geocode("Blacks bbq, 3110 Guadalupe St, Austin TX");
-        // restaurants.push(locality);
-        // locality = await geocode("8012 forest xing, live Oak, Tx 78233");
-        // restaurants.push(locality);
-        //
-        // document.getElementById("drop-marker").addEventListener("click", async function(event) {
-        //     restaurants.forEach(function(restaurant) {
-        //        const marker =  dropMarkerWPopup(restaurant);
-        //        marker.addTo(map);
-        //     })
-        // })
-
-
-        //using button to zoom in
-        const zoomIn = document.querySelector("#zoom-in");
-        zoomIn.addEventListener("click", function (event) {
-            let currentZoom = map.getZoom();
-            currentZoom++;
-            map.setZoom(currentZoom);
-        });
-
-        // document.getElementById("drop-marker").addEventListener("click", function (event) {
-        //
-        //     const marker = dropMarkerWPopup(restaurant);
-        //
-        //
-        // });
-
-        //drop a marker with a popup
-        function dropMarkerWPopup (address, token = MAPBOX_API_KEY, draggable = true) {
-            geocode(address, token).then(function(mapData) {
-
-                let marker1 = new mapboxgl.Marker(el, {draggable})
-                let popup1 = new mapboxgl.Popup()
-
-                marker1.setLngLat(mapData.features[0].center)
-                marker1.addTo(map)
-                marker1.setPopup(popup1);
-
-
-
-                // let marker2 = new mapboxgl.Marker(el, {draggable})
-                // let popup2 = new mapboxgl.Popup()
-                //
-                // marker2.setLngLat(mapData.features[0].center)
-                // marker2.addTo(map)
-                // marker2.setPopup(popup2);
-                //
-                // let marker3 = new mapboxgl.Marker(el, {draggable})
-                // let popup3 = new mapboxgl.Popup()
-                //
-                // marker3.setLngLat(mapData.features[0].center)
-                // marker3.addTo(map)
-                // marker3.setPopup(popup3);
-
-
-            });
-
-        }
         //customize my marker
         // el.classList.add("myMarker");
         const el = document.createElement('div');
-        el.className = 'marker myMarker';
+        el.className = 'marker myMarker'; //two class in className for the
 
 
 
