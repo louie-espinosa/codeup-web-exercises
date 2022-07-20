@@ -16,7 +16,9 @@
         return fetch(`https://api.github.com/users/${username}/events/public`, options)
 
             .then(response => response.json()).then(events => {
-                //do something with it
+                //do something with it, like this:
+                //1. (easy): return events[0].created_at, or this:
+                //2. )(moderate)
                 for (let event of events) {
                     if (event.type === 'PushEvent') {
                         return event.created_at
@@ -31,29 +33,27 @@
     const lastEventDate = await userLastPushEvent("louie-espinosa"); //
     console.log(lastEventDate);
 
-    //BONUS!!!!!!!!!
+
+    //----------------BONUS----------------------------------------------------------------------------
     const bonus = {
         //GET is default
         headers: {
             "authorization": GITHUB_API_KEY
         }
     }
-function wait (num) {
-    return fetch(`https://api.github.com/users`, bonus)
-
-        .then(response => response.json()).then(seconds => {
-            //do something with it
-            for (let second of seconds) {
-                if (second === 'fulfilled') {
-                    return second
+    function wait() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (Math.random() > 0.1) {
+                    resolve('Here is your data: ...');
+                } else {
+                    reject('Network Connection Error!');
                 }
+            }, 1500);
+        });
+    }
 
-            }
 
-        }, 3000)
-        .catch(error => console.log("error " + error));
-
-}
     wait(1000).then(() => console.log('You\'ll see this after 1 second'));
     wait(3000).then(() => console.log('You\'ll see this after 3 seconds'));
 
