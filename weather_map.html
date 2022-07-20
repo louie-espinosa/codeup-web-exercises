@@ -3,29 +3,32 @@
 <head>
     <meta charset="utf-8">
     <title>Weather Map</title>
+    <!--bootstrap link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!--map magic-->
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+        * {
+            box-sizing: border-box;
         }
-        body>h1 {
-            text-align: center;
-            font-size: 3rem;
-            color: #f5f5f5;
-            text-shadow:
-                    0px -2px 4px #fff,
-                    0px -2px 10px #FF3,
-                    0px -10px 20px #F90,
-                    0px -20px 40px #C33;
-            margin-top: 5px;
-
+        .coordinates {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            position: absolute;
+            bottom: 40px;
+            left: 10px;
+            padding: 5px 10px;
+            margin: 0;
+            font-size: 11px;
+            line-height: 18px;
+            border-radius: 3px;
+            display: none;
         }
         #map {
             position: absolute;
-            height: 700px;
+            height: 100vh;
             bottom: 0;
             right: 0;
             width: 25%;
@@ -37,37 +40,148 @@
             background-image: url("img/YG weather2.jpg");
             background-size: cover;
         }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #ffeb3b;
+            position: relative;
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow:
+                    0px -2px 4px #fff,
+                    0px -2px 10px #FF3,
+                    0px -10px 20px #F90,
+                    0px -20px 40px #C33;
+            margin-top: -5px;
+        }
+        .card {
+            border: solid black 2px;
+            margin-top: 1em;
+        }
+        .card-container {
+            perspective: 700px;
+            margin-inline-end: 18px;
+
+        }
+        .card-flip {
+            position: relative;
+            width: 30%;
+            transform-style: preserve-3d;
+            height: auto;
+            transition: all 0.5s ease-out;
+            background: white;
+            border: none;
+        }
+
+        .card-flip div {
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            width: 100%;
+            border: none;
+        }
+
+        .card-flip .front {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-flip .back {
+            position: relative;
+            z-index: 0;
+            transform: rotateY(-180deg);
+        }
+
+        .card-container:hover .card-flip {
+            transform: rotateY(180deg);
+        }
+        .card-block {
+            width: 100%;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+        }
+        .back {
+            font-size: 12px;
+            position: relative;
+            bottom: 10em;
+        }
+        label {
+            position: absolute;
+            bottom: 0;
+            left: 500px;
+            font-size: 1rem;
+            color: #fefefe;
+            text-shadow:
+                    0px -2px 4px #fff,
+                    0px -2px 10px #FF3,
+                    0px -10px 20px #F90,
+                    0px -20px 40px #C33;
+            margin-top: 5px;
+        }
+        input  {
+            position: absolute;
+            bottom: 20px;
+            left: 500px;
+        }
     </style>
 </head>
 <body class="bg-img">
-<style>
-    .coordinates {
-        background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        position: absolute;
-        bottom: 40px;
-        left: 10px;
-        padding: 5px 10px;
-        margin: 0;
-        font-size: 11px;
-        line-height: 18px;
-        border-radius: 3px;
-        display: none;
-    }
-</style>
 
-
-
-
-<h1>Scorchin Summer!<img src='img/hot.png'></h1>
+<!--input box-->
+<div className="form-group">
+    <label htmlFor="search-world" className="form-label">enter location</label><br>
+    <input type="text" id="search-world" name="search-world" className="form-control">
+</div>
+<!--fancy header-->
+        <div class="text">
+        <h2>Scorchin Summer!<img src='img/hot.png'></h2>
+        </div>
+        <svg>
+            <filter id="fire">
+                <feTurbulence id="turbulence" baseturbulence="0.1 0.1" numOctaves="2" seed="3">
+                    <animate attributeName="baseFrequency" dur="10s" value="0.1 0.1; 0.12 0.2" repeatCount="indefinite"></animate>
+                </feTurbulence>
+                <feDisplacementMap in2="SourceGraphic" scale="25"></feDisplacementMap>
+            </filter>
+        </svg>
+<!--my bootstrap card(s)-->
 <div id="map"></div>
 <pre id="coordinates" class="coordinates"></pre>
+<!--My card container-->
+
+<div id="add-weather-card" class="row">
+    <div class="card-container col-md-4 col-lg-2">
+        <div class="card card-flip col-md-12 col-lg-2" style="height: 45vh">
+            <div class="front card-block">
+                <div class="card-text">
+                    <div class="weatherIconAlignment card text-center col-md-12 col-lg-2">
+                        <div class="card-title">
+                            dayone.temp
+                        </div>
+                        <hr>
+                        <img class="weatherIcons" src="http://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="weather icons">
+                        ${data.daily[i].weather[0].description}
+                        <br>
+                        HI: ${weatherData.weather[0].temp.max}&#8457; <br> LO: ${data.daily[i].temp.min}&#8457;
+                    </div>
+                </div>
+            </div>
+            <div class="back card-block">
+                <div class="text-center">Humidity: ${data.daily[i].humidity} <br> UV-Index: ${data.daily[i].uvi} <br> Feels like:${data.daily[i].feels_like.day}</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-
-
-
-
+<!--linking to the API key-->
+<script src="js/keys.js"></script>
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoibGFlc3Bpbm9zYSIsImEiOiJjbDVsNDhmbzkwZzl0M2JsdnRqamVvZGgxIn0.NJF7zdZWmD2r8pYtTwp9gw';
@@ -75,14 +189,49 @@
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [0, 0],
+        center: [-98.4916, 29.4252],
         zoom: 2
     });
+    //Pulling the weather data
+    let weatherSetUp = new URLSearchParams({
+        APPID: OPEN_WEATHER_API_KEY,
+        lat: 29.423017,
+        lon: 98.48527,
+        units: "imperial"
+    });
 
+    // concat the weatherSetUp parameters onto the fetch URL
+    fetch("http://api.openweathermap.org/data/2.5/onecall?" + weatherSetUp, {
+            method: "GET"
+        }
+    ).then(async function(response) {
+        // use await to wait for the json data and then do something with it
+        const weatherData = await response.json();
+        console.log(weatherData);
+        weatherCards (weatherData) //calling a function that we will make later
+
+        return weatherData;
+
+    });
+
+    function weatherCards(weatherData) {
+        const dayOne = weatherData.daily[0]
+        const dayTwo = weatherData.daily[1]
+        const dayThree = weatherData.daily[2]
+        const dayFour = weatherData.daily[3]
+        const dayFive = weatherData.daily[4]
+
+        //use createElement, or .innerHTML
+
+
+
+    }
+
+    //My draggable marker centered in SA
     const marker = new mapboxgl.Marker({
         draggable: true
     })
-        .setLngLat([0, 0])
+        .setLngLat([-98.4916, 29.4252])
         .addTo(map);
 
     function onDragEnd() {
@@ -92,6 +241,21 @@
     }
 
     marker.on('dragend', onDragEnd);
+
+    //changes data from seconds of time to dates and hours and minutes
+    function parseTime(timestamp) {
+
+        let dayTwoDate = parseDate(dayTwo.dt)
+        console.log(dayTwoDate);
+        return new Date(timestamp * 1000).toLocaleString([], {hour: '2-digit', minute: '2-digit'});
+    }
+    const yourInput = document.getElementById("search-world");
+    const search = yourInput.value;
+
+
+
+
+
 </script>
 
 </body>

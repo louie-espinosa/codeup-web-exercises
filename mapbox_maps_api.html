@@ -91,6 +91,7 @@
                 el.className = 'marker myMarker';
 
                 const marker = new mapboxgl.Marker(el)
+                console.log(eatery.features[0].center);
                 marker.setLngLat(eatery.features[0].center)
                 marker.addTo(map)
 
