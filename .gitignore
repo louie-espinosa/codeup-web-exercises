@@ -1,2 +1,12 @@
 coffee-project-louie-valeria/
 keys.js
+
+.DS_Store
+
+private_constants.js
+config.js
+application.properties
+.env
+
+.idea
+*.iml
