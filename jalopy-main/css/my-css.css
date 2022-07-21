@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box
+}
+.bg-img {
+    background-image: url("../assets/r66.jpeg");
+}
+.home-title {
+    text-align: center;
+}
+main>div {
+
+}
+main>p {
+
+}
+.img {
+    max-width: 300px;
+    height: 200px;
+    border: 2px dot-dash cornflowerblue;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto
+}
+button {
+
+}
+.invisible {
+    visibility: hidden;
+}

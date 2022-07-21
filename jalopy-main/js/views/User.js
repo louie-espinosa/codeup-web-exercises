@@ -2,7 +2,7 @@ import createView from "../createView.js";
 
 const BASE_URI = `${BACKEND_HOST}/api/users`;
 
-export default function UserIndex(props) {
+export default function userIndex(props) {
     console.log(props);
     // language=HTML
     return `
@@ -25,7 +25,7 @@ export default function UserIndex(props) {
     `;
 }
 
-export function UserEvents() {
+export function userEvents() {
     $("#change-password-button").click(function() {
         const id = 1; // $("#add-post-id").val();
         let uriExtra = '/1/updatePassword';

@@ -1,12 +1,12 @@
-import Home, {HomeEvents} from "./views/Home.js";
-import About, {AboutEvents} from "./views/About.js";
+import home, {homeEvents} from "./views/Home.js";
+import aboutHTMLFunction, {aboutJSFunction} from "./views/About.js";
 import Error404 from "./views/Error404.js";
-import Loading from "./views/Loading.js";
+import loading from "./views/Loading.js";
 import Login from "./views/Login.js";
 import LoginEvent from "./auth.js";
 import Register from "./views/Register.js"
 import {RegisterEvent} from "./views/Register.js";
-import UserIndex, {UserEvents} from "./views/User.js";
+import userIndex, {userEvents} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
 
 /**
@@ -17,11 +17,11 @@ import Logout, {LogoutEvents} from "./views/Logout.js";
 export default function router(URI) {
     const routes = {
         '/': {
-            returnView: Home,
+            returnView: home,
             state: {},
             uri: '/',
             title: 'Home',
-            viewEvent: HomeEvents
+            viewEvent: homeEvents
         },
         '/logout': {
             returnView: Logout,
@@ -45,18 +45,18 @@ export default function router(URI) {
             viewEvent: RegisterEvent
         },
         '/users': {
-            returnView: UserIndex,
+            returnView: userIndex,
             state: {},
             uri: "/users",
             title: 'User Info',
-            viewEvent: UserEvents
+            viewEvent: userEvents
         },
         '/about': {
-            returnView: About,
+            returnView: aboutHTMLFunction,
             state: {},
             uri: '/about',
             title: 'About',
-            viewEvent: AboutEvents
+            viewEvent: aboutJSFunction
         },
         '/error': {
             returnView: Error404,
@@ -65,7 +65,7 @@ export default function router(URI) {
             title: ' ERROR',
         },
         '/loading': {
-            returnView: Loading,
+            returnView: loading,
             state: {},
             uri: location.pathname,
             title: 'Loading...',
