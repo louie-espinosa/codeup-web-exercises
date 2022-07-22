@@ -5,7 +5,7 @@ export default function Navbar(props) {
 
     // everyone can see home
     let html = `
-        <nav>
+         <nav class="navbar">
             <a class="jalopy-nav" href="/" data-link>Home</a>`;
 
     // everyone can see about
@@ -23,5 +23,6 @@ export default function Navbar(props) {
     }
 
     html = html + `</nav>`;
+
     return html;
 }

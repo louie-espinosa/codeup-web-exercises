@@ -53,41 +53,32 @@ const quotes = [
     },
 ]
 
-export default function quotesView () {
+export default function quotesView (props) {
 
 
     return `
-<h1 style="text-align: center; text-decoration: underline">QUOTES FROM VARIOUS AUTHORS!</h1>
+<h1 class="fancy-header">QUOTES FOR THE BRAIN TICKLING!</h1>
+<!-- calling the addQuotes function in here -->
     <div id"my-quotes">
-    ${addQuotes(quotes)}
+    ${addQuotes(props.quotes)}
     </div>
     `
-
-
-
 }
 
 
-
-
-export function quotesEvents() {
-
-
-
-
-
-
-
-}
 //accessing the objects properties requires we use dot notation!
 let html = ""
 function addQuotes(quotes) {
     for (let i = 0; i < quotes.length; i++) {
          html += `
-
-<p>"${quotes[i].quote}"</p>
-        <p>-
+<!-- quote box w/tail-->
+    <div class="quote-bbl tail">
+        <p>"${quotes[i].quote}"</p>
+    </div>
+        <p class="q-text">-
+        <i class="fa-solid fa-face-grin-tongue-squint"></i>
         ${quotes[i].author}
+        
         </p>
         `
 
@@ -96,7 +87,7 @@ function addQuotes(quotes) {
 }
 
 
-// in the QuotesEvents function, use JavaScript to dynamically add
+// use JavaScript to dynamically add
 
 // Format your quotes however you wish (e.g., striped table rows,
 // Bootstrap cards, etc.). Encapsulate all of the functionality for

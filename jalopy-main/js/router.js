@@ -8,7 +8,7 @@ import Register from "./views/Register.js"
 import {RegisterEvent} from "./views/Register.js";
 import userIndex, {userEvents} from "./views/User.js";
 import Logout, {LogoutEvents} from "./views/Logout.js";
-import quotesView, {quotesEvents} from "./views/Quotes.js";
+import quotesView from "./views/Quotes.js";
 
 /**
  * Returns the route object for a specific route based on the given URI
@@ -73,10 +73,18 @@ export default function router(URI) {
         },
         '/quotes': {
             returnView: quotesView,
-            state: {},
+            state: {
+                quotes: {
+                    url: "https://quotes.fulgentcorp.com:12250/v1/quotes?random=true&limit=10",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': QUOTE_API_KEY
+                    }
+                }
+
+            },
             uri: "/quotes",
             title: 'Quotes',
-            viewEvent: quotesEvents
         }
     };
 

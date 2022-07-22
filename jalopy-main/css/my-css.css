@@ -1,8 +1,16 @@
 * {
     box-sizing: border-box
 }
-.bg-img {
-    background-image: url("assets/r66.jpeg");
+.navbar {
+    position: fixed;
+    z-index: 1000;
+    /*lets make this reflexive for mobile*/
+    /*display: grid;*/
+
+}
+main {
+    background-image: url("../assets/r66.jpg");
+    height: fit-content;
 }
 .home-title {
     text-align: center;
@@ -42,4 +50,34 @@ button {
     padding: 20px;
     border-radius: 10px;
     max-width: 320px;
+}
+/* (B1) USE ::AFTER TO CREATE THE "TAIL" */
+.quote-bbl::after {
+    /* (B1-1) ATTACH TRANSPARENT BORDERS */
+    content: "";
+    border: 20px solid transparent;
+
+    /* (B1-2) NECESSARY TO POSITION THE "TAIL" */
+    position: absolute;
+}
+
+/* (B2) BOTTOM "CALLOUT TAIL" */
+.tail.quote-bbl::after {
+    /* (B2-1) DOWN TRIANGLE */
+    border-top-color: #a53d38;
+    border-bottom: 0;
+
+    /* (B2-2) POSITION AT BOTTOM */
+    bottom: -20px; left: 50%;
+    margin-left: -20px;
+}
+.fancy-header {
+    text-align: center;
+    padding: 20px 0;
+    color: dodgerblue;
+    text-decoration: blink;
+}
+.q-text {
+    font-weight: bold;
+    padding: 12px 0;
 }
