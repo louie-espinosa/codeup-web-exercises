@@ -2,7 +2,7 @@
     box-sizing: border-box
 }
 .bg-img {
-    background-image: url("../assets/r66.jpeg");
+    background-image: url("assets/r66.jpeg");
 }
 .home-title {
     text-align: center;
@@ -26,4 +26,20 @@ button {
 }
 .invisible {
     visibility: hidden;
+}
+/* (A) SPEECH BOX */
+.quote-bbl {
+    /* (A1) FONT */
+    font-family: arial, sans-serif;
+    font-size: 1.1em;
+
+    /* (A2) COLORS */
+    color: #fff;
+    background: #a53d38;
+
+    /* (A3) DIMENSIONS + POSITION */
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 320px;
 }
