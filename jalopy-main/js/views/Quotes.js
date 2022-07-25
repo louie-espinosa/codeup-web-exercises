@@ -56,14 +56,20 @@ const quotes = [
 export default function quotesView (props) {
 
 
-    return `
+    return `<br><br>
 <h1 class="fancy-header">QUOTES FOR THE BRAIN TICKLING!</h1>
+ 
 <!-- calling the addQuotes function in here -->
     <div id"my-quotes">
     ${addQuotes(props.quotes)}
     </div>
-    `
+    <div>
+     <a class="my-nav" href="/addQuote" data-link>Add Your fave quote</a>
+    </div>
+   
+    `;
 }
+
 
 
 //accessing the objects properties requires we use dot notation!

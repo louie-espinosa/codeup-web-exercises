@@ -14,7 +14,7 @@ export default async function createView(URI) {
     // remove trailing / if URI is not "/"
     if(URI.length > 1 && URI.substring(URI.length - 1, URI.length) === "/")
         URI = URI.substring(0, URI.length - 1);
-
+    console.log(URI);
     let route = router(URI);
 
     // Store the title because the loading screen render overwrites it.

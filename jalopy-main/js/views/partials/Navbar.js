@@ -10,7 +10,7 @@ export default function Navbar(props) {
 
     // everyone can see about
     html = html + `<a class="jalopy-nav" href="/about" data-link>About</a>`;
-    html += `<a class="Jalopy-nav" href="/quotes" data-link>Cool quotes </a>`
+    html += `<a class="Jalopy-nav" style="padding: 0 20px" href="/quotes" data-link>Cool quotes</a>`
 
     // only logged in can see user info and logout
     if(loggedIn) {
@@ -18,8 +18,8 @@ export default function Navbar(props) {
             <a href="/logout" data-link>Logout</a>`;
     } else {
         // if not logged in, can see login and register
-        html = html + `<a class="jalopy-nav" href="/login" data-link>Login</a>
-        <a class="jalopy-nav" href="/register" data-link>Register</a>`;
+        html = html + `<a class="my-nav" href="/login" data-link>Login</a>
+        <a class="my-nav" href="/register" data-link>Register</a>`;
     }
 
     html = html + `</nav>`;

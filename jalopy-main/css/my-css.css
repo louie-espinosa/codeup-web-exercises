@@ -1,16 +1,22 @@
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
+
+}
+body {
+
 }
 .navbar {
     position: fixed;
     z-index: 1000;
-    /*lets make this reflexive for mobile*/
+    /*lets make this reflexive for mobile, perhaps with a hamburger*/
     /*display: grid;*/
-
+}
+.my-nav {
+    padding: 0 20px;
 }
 main {
-    background-image: url("../assets/r66.jpg");
-    height: fit-content;
+    background-image: url("../assets/route66-map.png");
+
 }
 .home-title {
     text-align: center;
@@ -27,7 +33,8 @@ main>p {
     border: 2px dot-dash cornflowerblue;
     border-radius: 10px;
     display: block;
-    margin: 0 auto
+    margin: 0 auto;
+
 }
 button {
 
@@ -76,8 +83,16 @@ button {
     padding: 20px 0;
     color: dodgerblue;
     text-decoration: blink;
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    font-size: 2em;
+    font-weight: bold;
+
 }
 .q-text {
     font-weight: bold;
     padding: 12px 0;
+}
+a {
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    font-size: 2em;
 }
