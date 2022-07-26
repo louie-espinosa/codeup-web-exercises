@@ -58,10 +58,10 @@ export default function quotesView (props) {
 
     return `<br><br>
 <h1 class="fancy-header">QUOTES FOR THE BRAIN TICKLING!</h1>
- 
+ quotes = props.quotes
 <!-- calling the addQuotes function in here -->
     <div id"my-quotes">
-    ${addQuotes(props.quotes)}
+    ${addQuotes(quotes)}
     </div>
     <div>
      <a class="my-nav" href="/addQuote" data-link>Add Your fave quote</a>

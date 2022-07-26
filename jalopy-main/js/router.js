@@ -76,7 +76,7 @@ export default function router(URI) {
             returnView: quotesView,
             state: {
                 quotes: {
-                    url: "https://quotes.fulgentcorp.com:12250/v1/quotes?random=false&limit=10",
+                    url: "https://quotes.fulgentcorp.com:12250/v1/quotes?random=false&limit=20",
                     headers: {
                         'Accept': 'application/json',
                         'Authorization': QUOTE_API_KEY
